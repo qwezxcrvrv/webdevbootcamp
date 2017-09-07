@@ -1,0 +1,21 @@
+<% include partials/header %>
+<!-- get variables from route -->
+<h1>You fell love in with: <%= thingVar%></h1>
+
+<% if(thingVar.toLowerCase() ==="rusty"){%>
+    <p>Good Choice</p>
+<% } else { %>
+    <p>Bad Choice</p>
+<% } %>
+
+<p>P.S. this is from the love.ejs</p>
+
+<!-- values in the = tag rendered and will be added in the HTML-->
+<%=  %>
+
+<!-- won't show any code in the tags -->
+<%  %>
+
+<% include partials/footer %>
+
+
