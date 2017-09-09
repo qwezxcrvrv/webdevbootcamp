@@ -2,9 +2,15 @@
 //var app = require("express")();
 var express = require("express");
 var app = express();
+var bodyParser = require("body-parser");
+
+var love = ["Cake","Sleep","GF","Dog"];
+
 
 //Add public folder to be read
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({extended: true}));
+
 // read .ejs files
 app.set("view engine", "ejs");
 
@@ -18,7 +24,13 @@ app.get("/",function(req,res){
 app.get("/fall/:thing",function(req,res){
     var thing = req.params.thing;
     //It is ok to just write 'love'' without .ejs
-    res.render("love", {thingVar: thing});
+    res.render("love", {thingVar: thing, love:love });
+});
+
+app.post("/addLove", function(req,res){
+    var newLove = req.body.newLove;
+    love.push(newLove);
+    res.redirect("/fall/thing");
 });
 
 app.get("/posts",function(req, res) {
@@ -29,6 +41,8 @@ app.get("/posts",function(req, res) {
         ];
         res.render("posts.ejs", {posts: posts })
 });
+
+
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server started!!")

@@ -10,6 +10,16 @@
 
 <p>P.S. this is from the love.ejs</p>
 
+<br><br>
+<%love.forEach(function(loves){ %>
+    <li><%= loves %></li>
+<% }) %>
+
+<form action="/addLove" method="POST">
+    <input type="text" name="newLove" placeholder="name">
+    <button>I love you</button>
+</form>
+
 <!-- values in the = tag rendered and will be added in the HTML-->
 <%=  %>
 
